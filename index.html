@@ -1,0 +1,310 @@
+<?php
+// Initialize the session
+session_start();
+ 
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Poppins:wght@200&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@900&family=Cormorant+Garamond&family=Dancing+Script&family=Fira+Sans:wght@300&family=Fredoka+One&family=Inter:wght@200&family=Kanit:ital,wght@0,900;1,700;1,900&family=Libre+Baskerville&family=Lobster&family=Manjari&family=Montserrat+Alternates:wght@300&family=Open+Sans:wght@300&family=Passions+Conflict&family=Poppins:wght@200;300;700&family=Raleway:wght@300&family=Righteous&family=Rubik:wght@800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />  
+<link rel="shortcut icon" href="profile-pic (2).png" type="image/x-icon">
+<title>Dashboard</title>
+</head>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<body>
+   
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#"><span class="material-symbols-outlined" style="font-size: 28px;">
+            grid_view
+            </span>&nbsp; About</a>
+        <a href="#"><span class="material-symbols-outlined" style="font-size: 28px;">
+            insights
+            </span>&nbsp; Services</a>
+        <!-- <a href="#"<span class="material-symbols-outlined">
+            description
+            </span>Contact</a> -->
+        <a href="#"><span class="material-symbols-outlined" style="font-size: 28px;">
+            mail
+            </span>&nbsp; Contact</a>
+            <a href="#"><span class="material-symbols-outlined" style="font-size: 28px;">
+                insert_chart
+                </span>&nbsp; Graph</a>
+                <a href="#"><span class="material-symbols-outlined" style="font-size: 28px;">
+                    find_in_page
+                    </span>&nbsp; Find</a>
+                    <a href="logout.php"><span class="material-symbols-outlined" style="font-size: 28px;">
+                        logout
+                        </span>&nbsp; Exit</a>
+      </div>
+      
+      <div id="main">
+        <span style="font-size:30px;cursor:pointer; color:var(--secondary-color); position: absolute; z-index: 0;  top: 2.2rem; margin-left: 4rem;" onclick="openNav()">&#9776; </span>
+        <div class="header">
+            <ul>
+                <li>DASHBOARD</li>
+                <li><input type="search" placeholder="Search"></li>
+                <li style="font-size: 13px; color: var(--color12);">01 February 2023</li>
+                <li><button style="color: var( --secondary-color); border: none;background: transparent;"><span id="icon" class="material-symbols-outlined">
+                    toggle_off
+                    </span></button></li>
+                <li><span class="material-symbols-outlined">
+                    notifications_active
+                    </span></li>
+                <li><img style="width: 3%; padding-top: 1rem;" src="profile-pic (2).png"></li>
+            </ul>
+        </div>
+        <div class="imp-part">
+            <div class="hello">
+                
+                <h1>Welcome Back <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b></h1><br>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.<br> Temporibus perspiciatis illum nemo commodi! </p>
+                <img src="Untitled_design__1_-removebg-preview.png" style="margin-left: 50rem; margin-top: -9rem; width:20%">
+            </div>
+            <div class="team">
+                <h3>Team Statistics</h3>
+                <ul>
+                    <li><div class="numbering" style="background: var(--color14);">
+                        
+                        <h1>213</h1>
+                        <p>Activ members</p>
+                        <span class="material-symbols-outlined" style="top: -4rem; position: relative; margin-left: 11rem;">
+                            more_vert
+                                </span>
+                                
+                    </div></li>
+                    <li><div class="numbering" style="background: var(--color14);">
+                        <h1>110+</h1>
+                        <p>Total Sales</p>
+                        <span class="material-symbols-outlined" style="top: -4rem; position: relative; margin-left: 11rem;">
+                            more_vert
+                                </span>
+                    </div></li>
+                    <li><div class="numbering" style="background: var(--color14);">
+                        <h1>213</h1>
+                        <p>Transactions</p>
+                        <span class="material-symbols-outlined" style="top: -4rem; position: relative; margin-left: 11rem;">
+                            more_vert
+                                </span>
+                    </div></li>
+                    <li>
+                        <h2 style="margin-top:-4.9rem;position: absolute;">Reminder</h2>
+                        <div class="numbering1" style="position:relative; top: -2.1rem;">
+                        <h2>Design Meet</h2>
+                        <p>Lorem, ipsum dolor sit amet consectetur. </p>
+                    </div></li>
+                </ul>
+            </div>
+            <div class="team" style="margin-top: 0rem;">
+                
+                <ul style="margin-left:0rem;">
+                    <li ><h3>Status Board</h3></li>
+                    <li style="padding-left: 1px; margin-left: 22rem;"><span class="material-symbols-outlined">
+                        share
+                        </span></li style="padding-left: 1px;">
+                    <li style="padding-left: 1px;"><span class="material-symbols-outlined">
+                        search
+                        </span></lis>
+                    <li style="padding-left: 1px;"><span class="material-symbols-outlined">
+                        edit_note
+                        </span></li>
+                    <li style="padding-left: 1px;"><span class="material-symbols-outlined">
+                        delete
+                        </span></li>
+                    <li style="padding-left: 1px;"><span class="material-symbols-outlined">
+                        tune
+                        </span></li>
+                </ul>
+                <ul>
+                    <li><div class="numbering3">
+                        <table>
+                            <tr>
+                                <th>NAME</th>
+                                <th>ID</th>
+                                <th>POSITION</th>
+                                <th>TEAM</th>
+                                <th>STATUS</th>
+                                <th>CONTACTS</th>
+                            </tr>
+                            <tr class="data">
+                                <td><img style="width: 30%;" src="https://avatars.githubusercontent.com/u/68487488?v=4">&nbsp; <span >Fauzan Ali </span ></td>
+                                <td>00781</td>
+                                <td>Sr.Developer</td>
+                                <td>Web Development</td>
+                                <td class="active"><span class="material-symbols-outlined" style="font-size:5px;">
+                                    trip_origin
+                                    </span>Active</td>
+                                <td>+91 6389859901</td>
+                            </tr>
+                            <tr class="data">
+                                <td><img style="width: 30%;" src="https://www.rmeoc.org/wp-content/uploads/2018/01/circular-photo.png">&nbsp; <span >Fauzan Ali </span ></td>
+                                <td>00782</td>
+                                <td>Art Director</td>
+                                <td>Design</td>
+                                <td class="active"><span class="material-symbols-outlined" style="font-size:5px;">
+                                    trip_origin
+                                    </span>Active</td>
+                                <td>+91 6389859901</td>
+                            </tr>
+                            <tr class="data">
+                                <td><img style="width: 30%;" src="https://www.seerinteractive.com/hubfs/Team%20Member%20Headshots/meagan-jubb-seer-headshot.png">&nbsp; <span > Nikalson </span ></td>
+                                <td>00770</td>
+                                <td>Designer</td>
+                                <td>Design</td>
+                                <td class="break"><span class="material-symbols-outlined" style="font-size:5px;">
+                                    trip_origin
+                                    </span>On Brake</td>
+                                <td>+91 6389859901</td>
+                            </tr>
+                            <tr class="data">
+                                <td><img style="width: 30%;" src="https://www.rmeoc.org/wp-content/uploads/2018/01/circular-photo.png">&nbsp; <span > Robert</span ></td>
+                                <td>00799</td>
+                                <td>seo</td>
+                                <td>Seo</td>
+                                <td class="active"><span class="material-symbols-outlined" style="font-size:5px;">
+                                    trip_origin
+                                    </span>Active</td>
+                                <td>+91 6389859901</td>
+                            </tr>
+                            <tr class="data">
+                                <td><img style="width: 30%;" src="https://www.seerinteractive.com/hubfs/Team%20Member%20Headshots/meagan-jubb-seer-headshot.png">&nbsp; <span >Julia </span ></td>
+                                <td>00751</td>
+                                <td>Marketer</td>
+                                <td>Marketing</td>
+                                <td class="active" >
+                                    <span class="material-symbols-outlined" style="font-size:5px;">
+                                        trip_origin
+                                        </span>Active</td>
+                                <td>+91 6389859901</td>
+                            </tr>
+                            <tr class="data">
+                                <td><img style="width: 30%;" src="https://i0.wp.com/flourishcounselingmilwaukee.com/wp-content/uploads/2015/08/matt-circle-profile-updated.png">&nbsp; <span >Nick</span ></td>
+                                <td>00781</td>
+                                <td>Corrector</td>
+                                <td>R&D</td>
+                                <td class="out"><span class="material-symbols-outlined" style="font-size:5px;">
+                                    trip_origin
+                                    </span>Stay Out</td>
+                                <td>+91 6389859901</td>
+                            </tr>
+                            
+                        </table>
+                    </div></li>
+                    <li class="graph">
+                        <h2 style="margin-top:-2.7rem;position: absolute;">Progress</h2>
+                        <div class="numbering13">
+                        <h2>Design Meet</h2>
+                        <p>Lorem, ipsum dolor sit amet consectetur. </p>
+                    </div></li>
+                    <li class="graph" style="margin-top: 8rem;">
+                        <div class="numbering13" style="background-image: url('Untitled design (1)_2.png')">
+                            
+                              <div style="margin-top: .5rem; margin-left: 4rem; font-size: 11px;">
+                        <h2>Design Meet</h2>
+                        <p>Lorem, ipsum dolor sit amet consectetur. </p></div>
+                    </div></li>
+                    <li class="graph" style="margin-top: 16rem;">
+                        <div class="numbering13" style="background: url('Untitled design (1)_3.png') 100%;">
+                        <div style="width:70px; margin-left: -1rem;">
+                                <canvas id="myChart"></canvas>
+                              </div>
+                              
+                              <div style="margin-top: -4rem; margin-left: 4rem; font-size: 11px;">
+                        <h2>Design Meet</h2>
+                        <p>Lorem, ipsum dolor sit amet consectetur. </p></div>
+                    </div></li>
+                    <li class="graph" style="margin-top: 25rem;">
+                        <div class="numbering13" style="background:url('Untitled design (1)_4.png')">
+                        
+                        <h2>Design Meet</h2>
+                        <p>Lorem, ipsum dolor sit amet consectetur. </p>
+                    </div></li>
+                </ul>
+            </div> 
+            <div class="new-graph">
+            <div
+id="myChart" style="width:100%; max-width:600px; height:500px;">
+</div>
+            </div>
+            <div class="new-graph" style="float: right;margin-top: -25rem;">
+                <div>
+                    <canvas id="myChart1"></canvas>
+                  </div>
+            </div>
+            <div class="new-graph2">
+                <div>
+                    <canvas id="myChart11"></canvas>
+                  </div>
+            </div>
+         </div>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+<script>
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "200px";
+      document.getElementById("main").style.marginLeft = "80px";
+    }
+    
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "50px";
+      document.getElementById("main").style.marginLeft= "0px";
+    }
+    const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1
+      }]
+    },
+   
+  });
+  google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+var data = google.visualization.arrayToDataTable([
+  ['Contry', 'Mhl'],
+  ['Italy',54.8],
+  ['France',48.6],
+  ['Spain',44.4],
+  ['USA',23.9],
+  ['Argentina',14.5]
+]);
+
+var options = {
+  title:'World Wide Wine Production',
+  is3D:true
+};
+
+var chart = new google.visualization.PieChart(document.getElementById('myChart'));
+  chart.draw(data, options);
+}
+
+  var icon = document.getElementById('icon');
+
+  icon.onclick = function(){
+    document.body.classList.toggle("light-theme");
+  }
+</script>
+</html>
